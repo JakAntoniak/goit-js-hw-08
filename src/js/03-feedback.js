@@ -32,7 +32,7 @@ if (savedFormState) {
 form.addEventListener('submit', e => {
   e.preventDefault();
   console.log(savedFormState);
-  localStorage.clear();
+  localStorage.removeItem(STORAGE_KEY);
   email.value = '';
   message.value = '';
 });

@@ -4,7 +4,16 @@ import _, { now } from 'lodash';
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+player
+  .setCurrentTime(localStorage.getItem('videoplayer-current-time'))
+  .catch(function (error) {
+    switch (error.name) {
+      case alert('Range Error'):
+        break;
+      default:
+        break;
+    }
+  });
 
 function onTimeUpdate(timeupdate) {
   localStorage.setItem('videoplayer-current-time', timeupdate.seconds);
